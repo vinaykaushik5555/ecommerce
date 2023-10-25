@@ -1,5 +1,6 @@
 package com.ps.ecommerce.entity;
 
+import lombok.Builder;
 import lombok.Generated;
 import lombok.Setter;
 
@@ -7,13 +8,14 @@ import javax.persistence.*;
 
 @Setter
 @Generated
+@Builder
 @Entity
 @Table(name = "users")
-public class User extends BaseEntity {
+public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private int id;
+    private Integer id;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")

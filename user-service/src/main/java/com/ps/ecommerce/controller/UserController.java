@@ -4,7 +4,6 @@ import com.ps.ecommerce.base.BaseResponse;
 import com.ps.ecommerce.dto.UserDto;
 import com.ps.ecommerce.entity.User;
 import com.ps.ecommerce.service.UserServiceImp;
-import com.ps.ecommerce.utils.DateUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,14 +19,18 @@ public class UserController {
     @ResponseBody
     @PostMapping("/user")
     public ResponseEntity<BaseResponse> addUser(@RequestBody UserDto userDto) {
-        userDto.setCreatedAt(DateUtils.getCurrentDate());
-        userDto.setUpdatedAt(DateUtils.getCurrentDate());
         User addedUser = userServiceImp.addUser(userDto);
         BaseResponse response = new BaseResponse();
         if (addedUser!=null) {
             response.setStatus(true);
             response.setStatusCode(HttpStatus.CREATED.value());
             response.setMessage("User added successfully.");
+
+            userDto.setCreatedBy(addedUser.getCreatedBy());
+            userDto.setCreatedAt(addedUser.getCreatedAt());
+            userDto.setUpdatedBy(addedUser.getUpdatedBy());
+            userDto.setUpdatedAt(addedUser.getUpdatedAt());
+
             response.setData(userDto);
             return new ResponseEntity<>(response, HttpStatus.CREATED);
         } else {
@@ -38,5 +41,6 @@ public class UserController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
 
 }

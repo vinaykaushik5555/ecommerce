@@ -14,14 +14,14 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User addUser(UserDto userDto) {
-        User user = new User();
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setEmail(userDto.getEmail());
-        user.setPhone(userDto.getPhone());
-        user.setImageUrl(userDto.getImageUrl());
-        user.setCreatedAt(userDto.getCreatedAt());
-        user.setUpdatedAt(userDto.getUpdatedAt());
+        User user = User.builder()
+                .firstName(userDto.getFirstName())
+                .lastName(userDto.getLastName())
+                .email(userDto.getEmail())
+                .phone(userDto.getPhone())
+                .imageUrl(userDto.getImageUrl())
+                .build();
+
         User savedUser = repository.save(user);
         return savedUser;
     }
