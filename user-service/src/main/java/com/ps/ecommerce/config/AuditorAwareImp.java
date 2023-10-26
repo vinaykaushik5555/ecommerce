@@ -1,4 +1,4 @@
-package com.ps.ecommerce.utils;
+package com.ps.ecommerce.config;
 
 
 import org.springframework.data.domain.AuditorAware;

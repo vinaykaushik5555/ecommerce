@@ -1,9 +1,8 @@
 package com.ps.ecommerce.dto;
 
+import com.ps.ecommerce.base.BaseDto;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter

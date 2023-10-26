@@ -1,4 +1,4 @@
-package com.ps.ecommerce.dto;
+package com.ps.ecommerce.base;
 
 import lombok.Getter;
 import lombok.Setter;

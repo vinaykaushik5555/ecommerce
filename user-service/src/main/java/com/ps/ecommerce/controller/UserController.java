@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping("/user")
     public ResponseEntity<BaseResponse> addUser(@RequestBody UserDto userDto) {
         User addedUser = userServiceImp.addUser(userDto);
-        BaseResponse response = new BaseResponse();
+        BaseResponse response = BaseResponse.builder().build();
         if (addedUser!=null) {
             response.setStatus(true);
             response.setStatusCode(HttpStatus.CREATED.value());
