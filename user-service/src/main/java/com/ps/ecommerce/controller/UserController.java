@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
@@ -18,7 +20,7 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/user")
-    public ResponseEntity<BaseResponse> addUser(@RequestBody UserDto userDto) {
+    public ResponseEntity<BaseResponse> addUser(@Valid @RequestBody UserDto userDto) {
         User addedUser = userServiceImp.addUser(userDto);
         BaseResponse response = BaseResponse.builder().build();
         if (addedUser!=null) {
