@@ -14,18 +14,12 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class Auditable {
-
     @CreatedBy
     private String createdBy;
-
-    //@Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private LocalDateTime createdAt;
-
     @LastModifiedBy
     private String updatedBy;
-
-    //@Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private LocalDateTime updatedAt;
 }

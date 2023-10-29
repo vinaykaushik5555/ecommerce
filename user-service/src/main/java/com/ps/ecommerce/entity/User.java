@@ -5,6 +5,8 @@ import lombok.Generated;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Generated
@@ -26,4 +28,7 @@ public class User extends Auditable {
     private String email;
     @Column(name = "phone")
     private String phone;
+    @OneToMany(mappedBy = "addressId", cascade = CascadeType.ALL)
+    //@JoinColumn(name = "address", referencedColumnName = "addressId")
+    private List<Address> address = new ArrayList<>();
 }

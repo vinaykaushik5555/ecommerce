@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +25,17 @@ public class UserDto extends BaseDto {
     @NotNull(message = "Phone number can not be null or empty.")
     @NotEmpty(message = "Phone number can not be null or empty.")
     private String phone;
+    private List<AddressDto> address = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", addresses=" + address +
+                '}';
+    }
 }
