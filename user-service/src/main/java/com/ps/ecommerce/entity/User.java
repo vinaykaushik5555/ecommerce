@@ -28,6 +28,7 @@ public class User extends Auditable {
     private String email;
     @Column(name = "phone")
     private String phone;
+
     @OneToMany(mappedBy = "addressId", cascade = CascadeType.ALL)
     //@JoinColumn(name = "address", referencedColumnName = "addressId")
     private List<Address> address = new ArrayList<>();
